@@ -1,7 +1,6 @@
-const NodeMediaServer = require('node-media-server');
-
 const config = {
   rtmp: {
+    host: '0.0.0.0',
     port: 1936,
     chunk_size: 60000,
     gop_cache: true,
@@ -9,6 +8,7 @@ const config = {
     ping_timeout: 60,
   },
   http: {
+    host: '0.0.0.0',
     port: 8080,
     allow_origin: '*',
   },
@@ -20,13 +20,8 @@ const config = {
         hls: true,
         hlsFlags: '[hls_time=2:hls_list_size=6:hls_flags=delete_segments]',
         dash: false,
-        mediaRoot: '/home/ubuntu/video-streaming/media',  // 這裡才對
+        mediaRoot: '/home/ubuntu/video-streaming/media',
       },
     ],
   },
 };
-
-const nms = new NodeMediaServer(config);
-nms.run();
-
-console.log('Node Media Server is running...');
