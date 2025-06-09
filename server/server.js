@@ -13,7 +13,7 @@ const config = {
     allow_origin: '*',
   },
   trans: {
-    ffmpeg: '/usr/bin/ffmpeg', // Docker 內預設路徑
+    ffmpeg: '/usr/bin/ffmpeg',  // 容器裡安裝的 ffmpeg 路徑
     tasks: [
       {
         app: 'live',

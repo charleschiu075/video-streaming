@@ -1,12 +1,16 @@
-FROM node:18-buster
+FROM node:18
 
-RUN apt-get update && apt-get install -y ffmpeg
-
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
+
+RUN apt-get update && apt-get install -y ffmpeg
+
+
+EXPOSE 1935 8000
 
 CMD ["node", "server.js"]
