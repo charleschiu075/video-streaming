@@ -13,17 +13,17 @@ const config = {
     allow_origin: '*',
   },
   trans: {
-    ffmpeg: '/usr/bin/ffmpeg',  // 容器裡安裝的 ffmpeg 路徑
+    ffmpeg: '/usr/bin/ffmpeg',
     tasks: [
       {
         app: 'live',
         hls: true,
         hlsFlags: '[hls_time=2:hls_list_size=6:hls_flags=delete_segments]',
         dash: false,
+        mediaRoot: '/home/ubuntu/video-streaming/media',  // 這裡才對
       },
     ],
   },
-  mediaRoot: '/home/ubuntu/video-streaming/media',
 };
 
 const nms = new NodeMediaServer(config);
