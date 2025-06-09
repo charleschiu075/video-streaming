@@ -11,6 +11,6 @@ COPY . .
 RUN apt-get update && apt-get install -y ffmpeg
 
 
-EXPOSE 1935 8000
+EXPOSE 1936 8000
 
 CMD ["node", "server.js"]
