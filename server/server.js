@@ -23,6 +23,7 @@ const config = {
       },
     ],
   },
+  mediaRoot: '/home/ubuntu/video-streaming/media',
 };
 
 const nms = new NodeMediaServer(config);
