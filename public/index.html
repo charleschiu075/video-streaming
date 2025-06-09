@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>直播串流播放器</title>
+</head>
+<body>
+  <h1>直播串流播放示範</h1>
+  <video id="video" width="640" height="360" controls autoplay muted></video>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const video = document.getElementById('video');
+    const streamURL = 'http://13.210.72.108:8000/live/stream1/index.m3u8'; // 改成你的伺服器 IP
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(streamURL);
+      hls.attachMedia(video);
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play();
+      });
+
+      // Stats for nerds - 簡單顯示播放緩衝、fps 等
+      hls.on(Hls.Events.FRAG_BUFFERED, (_, data) => {
+        console.log(`Buffered fragment: ${data.frag.sn}`);
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = streamURL;
+      video.addEventListener('loadedmetadata', () => {
+        video.play();
+      });
+    } else {
+      alert('你的瀏覽器不支援 HLS 播放');
+    }
+  </script>
+</body>
+</html>
