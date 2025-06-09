@@ -1,3 +1,5 @@
+import NodeMediaServer from 'node-media-server';
+
 const config = {
   rtmp: {
     host: '0.0.0.0',
@@ -25,3 +27,7 @@ const config = {
     ],
   },
 };
+const nms = new NodeMediaServer(config);
+nms.run();
+
+console.log('Node Media Server is running...');
