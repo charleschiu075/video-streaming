@@ -4,6 +4,6 @@ services:
   mediaserver:
     build: .
     ports:
-      - "1935:1935"
-      - "8000:8000"
+      - "1936:1936"
+      - "8080:8080"
     restart: unless-stopped
