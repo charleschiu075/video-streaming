@@ -20,15 +20,23 @@ const config = {
         hls: true,
         hlsFlags: '[hls_time=2:hls_list_size=6:hls_flags=delete_segments]',
         dash: false,
-        mediaRoot: './media',
       },
     ],
   },
+  mediaRoot: './media',
 };
 
 console.log('🟢 使用設定:', JSON.stringify(config, null, 2));
 
+
 const nms = new NodeMediaServer(config);
+nms.on('prePublish', (id, StreamPath, args) => {
+  console.log('[Hook] prePublish:', id, StreamPath, args);
+});
+nms.on('postPublish', (id, StreamPath, args) => {
+  console.log('[Hook] postPublish:', id, StreamPath, args);
+});
+
 nms.run();
 
 console.log('✅ Node Media Server is running...');
