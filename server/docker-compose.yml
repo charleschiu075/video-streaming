@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-  mediaserver:
-    build: .
-    ports:
-      - "1936:1936"
-      - "8080:8080"
-    restart: unless-stopped
